@@ -7,9 +7,9 @@ username=""
 password=""
 
 [integration.mqtt]
-event_topic_template="eu868/gateway/{{ .GatewayID }}/event/{{ .EventType }}"
-state_topic_template="eu868/gateway/{{ .GatewayID }}/state/{{ .StateType }}"
-command_topic_template="eu868/gateway/{{ .GatewayID }}/command/#"
+event_topic_template="us915_0/gateway/{{ .GatewayID }}/event/{{ .EventType }}"
+state_topic_template="us915_0/gateway/{{ .GatewayID }}/state/{{ .StateType }}"
+command_topic_template="us915_0/gateway/{{ .GatewayID }}/command/#"
 
 [backend]
 type="basic_station"
@@ -20,7 +20,7 @@ type="basic_station"
   tls_key=""
   ca_cert=""
 
-  region="EU868"
+  region="us915_0"
   frequency_min=863000000
   frequency_max=870000000
 
