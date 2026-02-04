@@ -80,6 +80,26 @@ services:
     networks:
       - default
 
+  mqtt-to-sirma:
+    build: ./mqtt-to-sirma
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      MQTT_TOPIC: "application/9e793c11-67d5-428c-a21d-2949e55a0646/device/+/event/up"
+
+      # TU BD SIRMA (la que corre en sirma-postgres y está en localhost:5433)
+      PG_HOST: host.docker.internal
+      PG_PORT: "5433"
+      PG_DB: sirma
+      PG_USER: sirma
+      PG_PASS: "sirma"
+
+      # Recomendado para tu mapa: solo guardar GPS real del dispositivo (gpsLocation)
+      STRICT_DEVICE_GPS: "true"
+
 
 volumes:
   postgresqldata:
